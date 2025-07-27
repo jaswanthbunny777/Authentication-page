@@ -1,0 +1,256 @@
+:root {
+  --blue1: #2563eb;
+  --blue2: #1d4ed8;
+  --blue3: #3b82f6;
+  --purple: #7c3aed;
+  --green: #10b981;
+  --gradient-a: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+  --gradient-b: linear-gradient(135deg, #f0fdf4 0%, #bae6fd 100%);
+  --gradient-c: linear-gradient(135deg, #ede9fe 0%, #f3e8ff 100%);
+  --gradient-d: linear-gradient(135deg, #f0f4ff 10%, #bae6fd 90%);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #fff 13%, #2563eb 100%,#fff 13%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.page-fade {
+  opacity: 0;
+  animation: fadeIn 0.8s cubic-bezier(.51,1,.72,1) 0.13s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------- Gradient Containers ---------- */
+.box, .card, .form-card {
+  margin: 30px auto 0 auto;
+  border-radius: 20px;
+  padding: 36px 24px 32px 42px;
+  width: 100%;
+  max-width: 395px;
+  background: var(--gradient-a);
+  box-shadow: 0 8px 32px var(--blue1)11, 0 2px 6px var(--blue3)0d;
+  border: 3px solid transparent;
+  background-clip: padding-box, border-box;
+  transition: 
+    box-shadow 0.38s cubic-bezier(.51,1,.72,1),
+    border 0.38s, background 0.55s;
+  position: relative;
+}
+
+.box:hover, .card:hover, .form-card:hover {
+  background: var(--gradient-d);
+  border: 3px solid;
+  border-image: linear-gradient(90deg, #bae6fd, #c084fc, #2563eb);
+  border-image-slice: 1;
+  box-shadow: 0 16px 40px var(--purple)11, 0 4px 16px var(--green)22;
+}
+
+h2, h1, .gradient-title {
+  background: linear-gradient(90deg, var(--blue1) 20%, var(--purple) 69%, var(--green) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 26px;
+  user-select: none;
+  letter-spacing: 1px;
+  font-size: 1.65em;
+}
+
+input, textarea {
+  padding: 12px 14px;
+  font-size: 1em;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: var(--gradient-b);
+  box-shadow: 0 2px 10px var(--blue2)11;
+  transition: 
+    border-color 0.26s, 
+    box-shadow 0.23s,
+    background 0.22s;
+  margin-bottom: 3px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #7c3aed;
+  background: var(--gradient-c);
+  box-shadow: 0 6px 16px var(--blue1)22;
+}
+
+button {
+  margin-top: 16px;
+  background: linear-gradient(90deg, #2563eb 30%, #7c3aed 89%);
+  color: #fff;
+  border: 10px;
+  border-radius: 16px;
+  padding: 12px 0;
+  font-size: 1.08em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 3px 15px var(--blue1)33;
+  transition:
+    background 0.29s,
+    box-shadow 0.22s,
+    transform 0.21s cubic-bezier(.51,1,.72,1);
+}
+
+button:hover, button:focus {
+  background: linear-gradient(90deg, #4f46e5, #3b82f6 90%);
+  box-shadow: 0 7px 28px #1d4ed888;
+  transform: translateY(-1.5px) scale(1.035);
+  outline: none;
+}
+
+a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: text-decoration 0.2s, color 0.2s;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0f46eb;
+  background: none;
+  -webkit-text-fill-color: #3949ab;
+}
+
+.form-message {
+  min-height: 28px;
+  text-align: center;
+  margin-top: 11px;
+  font-size: 0.98em;
+  color: #b91c1c;
+}
+
+@media (max-width: 500px) {
+  .box, .card, .form-card {
+    max-width: 97vw;
+    padding: 20px 3vw 17px 3vw;
+    border-radius: 14px;
+  }
+  h2, h1 {
+    font-size: 1.14em;
+  }
+}
+
+.feature-step-card {
+  background: linear-gradient(120deg,#f0f4ff 0%,#bae6fd 100%);
+  border-radius: 14px;
+  box-shadow: 0 3px 12px #2563eb14;
+  padding: 16px 15px 12px 15px;
+  margin: 0 0 22px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.25s, background 0.34s, transform 0.25s;
+}
+.feature-step-card:hover {
+  background: linear-gradient(120deg,#bae6fd 0%,#d1fae5 100%);
+  box-shadow: 0 8px 28px #2563eb30;
+  transform: translateY(-4px) scale(1.025);
+}
+.feature-step-text {
+  color: #174ea6;
+  font-size: 1.10em;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.feature-step-image {
+  width: 98%;
+  border-radius: 8px;
+  margin-bottom: 0;
+  box-shadow: 0 2px 14px #2563eb1a;
+  transition: box-shadow 0.22s, filter 0.22s;
+}
+.feature-step-card:hover .feature-step-image {
+  box-shadow: 0 10px 28px #2563eb40;
+  filter: saturate(1.15);
+}
+.gradient-card {
+  background: linear-gradient(135deg,#dbeafe 6%, #93c5fd 44%, #6366f1 100%);
+  border-radius: 16px;
+  box-shadow: 0 5px 24px #3b82f622;
+  padding: 28px 22px 20px 22px;
+  transition: box-shadow 0.3s, background 0.4s;
+}
+.gradient-card:hover {
+  background: linear-gradient(135deg, #93c5fd 0%, #2563eb 100%);
+  box-shadow: 0 12px 42px #2563eb3b;
+}
+
+.input-animate {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #dbeafe;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 8px;
+  transition: box-shadow 0.22s, border-color 0.22s, background 0.22s;
+  background: #f8faff;
+}
+.input-animate:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #e0e7ff;
+  box-shadow: 0 2px 14px #2563eb36;
+}
+.input-animate:hover {
+  box-shadow: 0 4px 18px #2563eb30;
+  background: #f3fafe;
+  border-color: #3b82f6;
+}
+
+.password-form label {
+  font-size: 1.04em;
+  color: #2563eb;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.password-form input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: #f8fafc;
+  border: 2px solid #e0e7ff;
+  border-radius: 9px;
+  font-size: 1.08em;
+  padding: 10px 13px;
+  transition: 
+    box-shadow 0.21s cubic-bezier(.51,1,.72,1),
+    background 0.22s, 
+    border-color 0.21s;
+}
+
+.password-form input:focus {
+  border-color: #2563eb;
+  background: #eef3fc;
+  box-shadow: 0 2px 21px #2563eb34;
+  outline: none;
+}
+
+.password-form input:hover {
+  box-shadow: 0 4px 14px #2563eb32;
+  background: #ecf7fd;
+  border-color: #60a5fa;
+}
