@@ -7,27 +7,25 @@ const authRoutes = require('./routes/auth');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://authenticationpagejaswanth.netlify.app',
+  credentials: true
+}));
 app.use(express.json());
 
-// MongoDB connection
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 })
 .then(() => console.log('MongoDB connected'))
 .catch((err) => console.error('MongoDB connection error:', err));
 
-// Routes
 app.use('/api/auth', authRoutes);
 
-// Base route
 app.get('/', (req, res) => {
-  res.send('Server is running, sit tight');
+  res.send('Server is running,sit tight');
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
