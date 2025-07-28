@@ -22,15 +22,14 @@ export default function ChangePassword() {
     }
     setMessage("");
     try {
-      // Adjust the endpoint as per your backend "forgot password" flow logic!
-      const res = await axios.post("http://localhost:5000/api/auth/change-password", {
-        username,
-        newPassword,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/change-password`,
+        { username, newPassword }
+      );
       setMessage(res.data.message || "Password changed successfully!");
       setUsername("");
       setNewPassword("");
-      setTimeout(() => navigate("/login"), 1800);  // Redirect after change
+      setTimeout(() => navigate("/login"), 1800);
     } catch (err) {
       setMessage(err.response?.data?.message || "Error changing password");
     }
@@ -68,7 +67,8 @@ export default function ChangePassword() {
           marginTop: 0,
           color: "transparent",
           background: "linear-gradient(90deg, #2563eb, #6366f1)",
-          backgroundClip: "text", WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
           fontWeight: "bold",
           textAlign: "center",
           marginBottom: 20,
