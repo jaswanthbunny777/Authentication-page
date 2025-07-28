@@ -23,7 +23,10 @@ export default function Login() {
     e.preventDefault();
     setMessage("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", { username, password });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        { username, password }
+      );
       localStorage.setItem("token", res.data.token);
       setMessage("Login successful!");
       navigate("/home");
@@ -37,23 +40,19 @@ export default function Login() {
       <SplashVideo
         videoSrc="/login-splash.mp4"
         onVideoEnd={handleSplashEnd}
-        onClickSplash={handleSplashEnd} // Pass the click handler!
+        onClickSplash={handleSplashEnd}
       />
     );
   }
 
-  // ... rest of your login UI as before ...
   return (
     <div style={{
       maxWidth: 350, margin: "60px auto", background: "#fff", borderRadius: 16,
       boxShadow: "0 8px 32px #2563eb1e", padding: "36px 28px 32px 28px"
     }}>
-      {/* ... rest of your code (same as you pasted) ... */}
-      {/* unchanged below */}
       <div style={{
         background: "linear-gradient(90deg,#2563eb 70%, #6366f1 100%)",
-        color: "#fff",
-        fontWeight: "bold", padding: "14px",
+        color: "#fff", fontWeight: "bold", padding: "14px",
         borderRadius: 12, fontSize: "1.18em", marginBottom: 24,
         textAlign: "center", letterSpacing: ".02em", boxShadow: "0 2px 12px #2563eb2c"
       }}>
@@ -67,7 +66,6 @@ export default function Login() {
       }}>Login</h2>
       <form onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column", gap: "16px", marginBottom: 16 }}>
-        {/* ... rest of your form ... */}
         <input
           name="username"
           placeholder="Username"
