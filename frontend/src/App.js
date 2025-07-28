@@ -6,14 +6,6 @@ import Home from "./pages/Home";
 import ChangePassword from "./pages/ChangePassword";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-const mongoose = require("mongoose");
-
-mongoose.connect("YOUR_ATLAS_CONNECTION_STRING", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log("Connected to MongoDB Atlas"))
-  .catch((err) => console.error("MongoDB connection error:", err));
 
 function App() {
   return (
