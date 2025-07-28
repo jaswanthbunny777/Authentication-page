@@ -31,10 +31,10 @@ export default function Signup() {
     }
     setMessage("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
-        username,
-        password,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/register`,
+        { username, password }
+      );
       setMessage(res.data.message);
       setUsername("");
       setPassword("");
@@ -74,7 +74,7 @@ export default function Signup() {
           marginBottom: 24,
           textAlign: "center",
           letterSpacing: ".07em",
-          boxShadow: "0 2px 12px #2563eb2c"
+          boxShadow: "0 2px 12px #2563eb2c",
         }}
       >
         Create new account
@@ -84,11 +84,12 @@ export default function Signup() {
           marginTop: 0,
           color: "transparent",
           background: "linear-gradient(90deg, #2563eb, #6366f1)",
-          backgroundClip: "text", WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
           fontWeight: "bold",
           textAlign: "center",
           marginBottom: 20,
-          userSelect: "none"
+          userSelect: "none",
         }}
       >
         Signup
@@ -96,8 +97,10 @@ export default function Signup() {
       <form
         onSubmit={handleSubmit}
         style={{
-          display: "flex", flexDirection: "column",
-          gap: "16px", marginBottom: 16
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          marginBottom: 16,
         }}
       >
         <input
@@ -114,7 +117,7 @@ export default function Signup() {
             fontSize: 16,
             background: "#f7faff",
             boxShadow: "0 1px 8px #2563eb10",
-            transition: ".26s"
+            transition: ".26s",
           }}
           onMouseOver={e => e.currentTarget.style.borderColor = "#6366f1"}
           onMouseOut={e => e.currentTarget.style.borderColor = "#dbeafe"}
@@ -134,7 +137,7 @@ export default function Signup() {
             fontSize: 16,
             background: "#f7faff",
             boxShadow: "0 1px 8px #2563eb10",
-            transition: ".26s"
+            transition: ".26s",
           }}
           onMouseOver={e => e.currentTarget.style.borderColor = "#6366f1"}
           onMouseOut={e => e.currentTarget.style.borderColor = "#dbeafe"}
@@ -155,9 +158,16 @@ export default function Signup() {
           disabled={!isStrongPassword(password)}
           style={{
             background: "linear-gradient(90deg, #2563eb 70%, #6366f1 100%)",
-            color: "white", border: "none", borderRadius: 8, padding: "12px 0",
-            fontSize: 16, fontWeight: "bold", cursor: "pointer", letterSpacing: "1px",
-            boxShadow: "0 2px 8px #6366f134", transition: "0.26s"
+            color: "white",
+            border: "none",
+            borderRadius: 8,
+            padding: "12px 0",
+            fontSize: 16,
+            fontWeight: "bold",
+            cursor: "pointer",
+            letterSpacing: "1px",
+            boxShadow: "0 2px 8px #2563eb134",
+            transition: "0.26s",
           }}
           onMouseOver={e => { e.currentTarget.style.background = "linear-gradient(90deg,#6366f1 70%,#2563eb 100%)" }}
           onMouseOut={e => { e.currentTarget.style.background = "linear-gradient(90deg,#2563eb 70%,#6366f1 100%)" }}
